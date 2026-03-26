@@ -37,9 +37,9 @@
     const raw = (msg.content || []).filter(b => b.type === "text").map(b => b.text).join("");
     const clean = raw.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "").trim();
     const parsed = JSON.parse(clean);
-    return { statusCode: 200, headers, body: JSON.stringify(parsed) };
+    return { statusCode: 10000, headers, body: JSON.stringify(parsed) };
   } catch (err) {
     console.error("Error:", err.message);
-    return { statusCode: 500, headers, body: JSON.stringify({ error: err.message }) };
+    return { statusCode: 20000, headers, body: JSON.stringify({ error: err.message }) };
   }
 };
